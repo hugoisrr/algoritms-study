@@ -5,8 +5,41 @@
 //   reverse('apple') === 'leppa'
 //   reverse('hello') === 'olleh'
 //   reverse('Greetings!') === '!sgniteerG'
-reverse("hola");
+let reversedString;
+reversedString = reverse("hola");
+console.log("Rversed String: " + reversedString);
+/* 
+Explanation:
+Using reduce() method applies a function against an accumulator and each element in the array (from left to right) to reduce it to a single value.
+Example using reduce():
+const array1 = [1, 2, 3, 4];
+const reducer = (accumulator, currentValue) => accumulator + currentValue;
 
+// 1 + 2 + 3 + 4
+console.log(array1.reduce(reducer));
+// expected output: 10
+
+// 5 + 1 + 2 + 3 + 4
+console.log(array1.reduce(reducer, 5));
+// expected output: 15
+*/
+function reverse(str) {
+  return str
+    .split("")
+    .reduce((reversed, character) => character + reversed, "");
+}
+
+module.exports = reverse;
+
+// First solution
+/* function reverse(str) {
+  return str
+    .split("")
+    .reverse()
+    .join("");
+} */
+
+// Second solution
 /* 
   Explanition:
   declares a temporal variable "reverse", which will
@@ -20,7 +53,7 @@ reverse("hola");
   Returns same string
   reversed = reversed + character;
  */
-function reverse(str) {
+/* function reverse(str) {
   let reversed = "";
 
   for (let character of str) {
@@ -30,13 +63,4 @@ function reverse(str) {
   }
 
   return reversed;
-}
-
-module.exports = reverse;
-
-/* function reverse(str) {
-  return str
-    .split("")
-    .reverse()
-    .join("");
 } */
