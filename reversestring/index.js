@@ -4,7 +4,7 @@
 // --- Examples
 //   reverse('apple') === 'leppa'
 //   reverse('hello') === 'olleh'
-//   reverse('Greetings!') === '!sgniteerG'
+reverse("Greetings!"); // === '!sgniteerG'
 
 // Second solution
 /* 
@@ -25,7 +25,7 @@ function reverse(str) {
 
   for (let character of str) {
     reversed = character + reversed;
-    // debugger; // to debug using "node inspect"
+    debugger; // to debug using "node inspect"
   }
 
   return reversed;
