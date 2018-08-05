@@ -38,7 +38,6 @@ function matrix(n) {
     // End Column
     for (let i = startRow; i <= endRow; i++) {
       results[i][endColumn] = counter;
-      debugger;
       counter++;
     }
     endColumn--;
