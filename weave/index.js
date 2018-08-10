@@ -22,8 +22,25 @@
 //    q.remove() // 2
 //    q.remove() // 'There'
 
-const Queue = require('./queue');
+const Queue = require("./queue");
 
-function weave(sourceOne, sourceTwo) {}
+function weave(sourceOne, sourceTwo) {
+  const q = new Queue();
+
+  /* To iterate all the elements inside the two arrays,
+  we use a while loop as long it returns a non-undefined value
+  it continues to loop. For that we use peek() */
+  while (sourceOne.peek() || sourceTwo.peek()) {
+    if (sourceOne.peek()) {
+      // if is non-undefined
+      q.add(sourceOne.remove()); // removes the iterate element and add it to the new q
+    }
+
+    if (sourceTwo.peek()) {
+      q.add(sourceTwo.remove());
+    }
+  }
+  return q;
+}
 
 module.exports = weave;
