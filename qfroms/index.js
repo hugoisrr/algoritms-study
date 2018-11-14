@@ -11,6 +11,7 @@
 //     q.peek();  // returns 1
 //     q.remove(); // returns 1
 //     q.remove(); // returns 2
+// esta es una prueba GitHub
 
 const Stack = require('./stack');
 
