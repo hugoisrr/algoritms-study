@@ -37,14 +37,55 @@ class LinkedList {
         return this.head;
     }
 
-    getLast() {        
+    getLast() {    
+        if (!this.head) {
+            return null;
+        }    
+
         let node = this.head;
 
-        while (node) {            
+        /* Iterates through the Linked List */
+        while (node) {  
+            /* If doesn't find a node.next return the last node */          
+            if (!node.next) {
+                return node;
+            }
             node = node.next;
         }
+    }
 
-        return node;
+    clear() {
+        this.head = null;
+    }
+
+    removeFirst() {
+        if (!this.head) {
+            return;
+        }
+        // this.head.next points to the next node "second node"
+        this.head = this.head.next;
+    }
+
+    removeLast() {
+        if (!this.head) {
+            return;
+        }
+
+        // reference to the first node can be also with "this.head.next"
+        if (this.size() == 1) {
+            this.head = null;
+            return;
+        }
+        // new node points to the first node of the list
+        let node = this.head;
+        /* node.next.next is the next of the second node,
+        it iterates through the List until the last node,
+        then it assign the next of the last node to node */
+        while (node.next.next) {
+            node = node.next;            
+        }
+        // removes the last node
+        node.next = null;
     }
 }
 
@@ -54,5 +95,5 @@ list.head = nodeOne;
 list.insertFirst(15);
 list
 
-console.log(list.getFirst());
+// console.log(list.size());
 module.exports = { Node, LinkedList };
