@@ -114,7 +114,31 @@ class LinkedList {
     insertLast(data) {
         const node = new Node(data, null);
         let lastNode = this.getLast();
-        lastNode.next = node;
+        if (lastNode) {
+            lastNode.next = node;    
+        } else {
+            this.head = node;
+        }
+        
+    }
+
+    getAt(index) {
+        if (!this.head) {
+            return null;
+        }
+
+        let node = this.head;
+        let counter = 0;
+
+        /* Iterates through the Linked List */
+        while (node) {  
+            /* If counter is equal to the index return node */
+            if (counter == index) {                
+                return node;
+            }
+            counter++;
+            node = node.next;
+        }
     }
 
 }
