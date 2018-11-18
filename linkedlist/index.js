@@ -110,7 +110,15 @@ class LinkedList {
         }
         previous.next = null;
     }
+
+    insertLast(data) {
+        const node = new Node(data, null);
+        let lastNode = this.getLast();
+        lastNode.next = node;
+    }
+
 }
+
 
 const nodeOne = new Node(5);
 const list = new LinkedList();
@@ -119,4 +127,5 @@ list.insertFirst(15);
 list
 
 // console.log(list.size());
+console.log(list.getLast());
 module.exports = { Node, LinkedList };
