@@ -11,10 +11,50 @@
 //     q.peek();  // returns 1
 //     q.remove(); // returns 1
 //     q.remove(); // returns 2
-// esta es una prueba GitHub
 
 const Stack = require('./stack');
 
-class Queue {}
+class Queue {
+    // declaring 2 stacks to simulate the functionality of Queue
+    constructor() {
+        this.first = new Stack();
+        this. second = new Stack();
+    }
+
+    add(record) {
+        this.first.push(record);
+    }
+
+    remove() {
+        // look first within the first stack and push into the second stack
+        while (this.first.peek()) {
+            this.second.push(this.first.pop());
+        }
+
+        //store first record in second stack
+        const record = this.second.pop();
+
+        // look within the second stack and pop all records and push them into the first stack
+        while (this.second.peek()) {
+            this.first.push(this.second.pop());
+        }
+
+        return record;
+    }
+
+    peek() {
+        while (this.first.peek()) {
+            this.second.push(this.first.pop());
+        }
+
+        const record = this.second.peek();
+
+        while (this.second.peek()) {
+            this.first.push(this.second.pop());
+        }
+
+        return record;
+    }
+}
 
 module.exports = Queue;
