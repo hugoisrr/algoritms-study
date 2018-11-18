@@ -21,7 +21,7 @@ class LinkedList {
         this.head = node;
     }
 
-    size () {        
+    size() {        
         let counter = 0;
         let node = this.head;
 
@@ -32,6 +32,20 @@ class LinkedList {
 
         return counter;
     }
+
+    getFirst() {
+        return this.head;
+    }
+
+    getLast() {        
+        let node = this.head;
+
+        while (node) {            
+            node = node.next;
+        }
+
+        return node;
+    }
 }
 
 const nodeOne = new Node(5);
@@ -40,5 +54,5 @@ list.head = nodeOne;
 list.insertFirst(15);
 list
 
-console.log(list.size());
+console.log(list.getFirst());
 module.exports = { Node, LinkedList };
