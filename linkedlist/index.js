@@ -66,7 +66,7 @@ class LinkedList {
         this.head = this.head.next;
     }
 
-    removeLast() {
+    /* removeLast() {
         if (!this.head) {
             return;
         }
@@ -80,12 +80,35 @@ class LinkedList {
         let node = this.head;
         /* node.next.next is the next of the second node,
         it iterates through the List until the last node,
-        then it assign the next of the last node to node */
+        then it assign the next of the last node to node *//*
         while (node.next.next) {
             node = node.next;            
         }
         // removes the last node
         node.next = null;
+    } */
+    // Another solution for method removeLast
+    removeLast(){
+        if (!this.head) {
+            return;
+        }
+
+        // reference to the first node can be also with "this.head.next"
+        if (this.size() == 1) {
+            this.head = null;
+            return;
+        }
+
+        // points to the List
+        let previous = this.head;
+        // points to the first node
+        let node = this.head.next;
+        // iterates through the List
+        while (node.next) {
+            previous = node;
+            node = node.next;
+        }
+        previous.next = null;
     }
 }
 
