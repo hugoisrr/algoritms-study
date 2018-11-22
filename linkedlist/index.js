@@ -130,26 +130,71 @@ class LinkedList {
         let node = this.head;
         let counter = 0;
 
-        /* Iterates through the Linked List */
-        while (node) {  
-            /* If counter is equal to the index return node */
-            if (counter == index) {                
-                return node;
-            }
-            counter++;
-            node = node.next;
+        if (this.size() < index) {
+            return null;
+        } else if (this.size() >= index){
+            /* Iterates through the Linked List */
+            while (node) {  
+                /* If counter is equal to the index return node */
+                if (counter === index) {                
+                    return node;
+                }
+                counter++;
+                node = node.next;
+            }    
         }
+        
     }
+
+    removeAt(index) {        
+        if(!this.head) {
+            return null;
+        }
+
+        let current = this.head;
+        let next = this.head.next;
+        let counter = 0;
+
+        if(index === 0) {
+            this.head = next;
+        }
+
+        while(counter < index && next) {
+            counter++;
+            next = next.next;
+        }
+
+        current.next = next;
+    }
+
+    /* insertAt(data,index) {
+        if (!this.head) {
+            return null;
+        }
+
+        const node = new Node(data, null);
+        if (this.size() < index) {
+            return null;
+        } else if(this.size() === 1) {
+            node.next = this.head;
+            this.head = node;
+        } else if (this.size() >= index){
+            let prevNode = this.getAt(index-1);
+            let nextNode = this.getAt(index+1);
+            prevNode.next = node;
+            node.next = nextNode;
+        }
+    } */
 
 }
 
 
-const nodeOne = new Node(5);
+/* const nodeOne = new Node(5);
 const list = new LinkedList();
 list.head = nodeOne;
-list.insertFirst(15);
-list
+list.insertFirst(15); */
+// list
 
 // console.log(list.size());
-console.log(list.getLast());
+// console.log(list.getLast());
 module.exports = { Node, LinkedList };
