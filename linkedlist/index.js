@@ -185,6 +185,25 @@ class LinkedList {
         }        
     }
 
+    // using recursion we pass the new node and the updated counter
+    forEach(fn) {
+        let node = this.head;
+        let counter = 0;
+        while (node) {
+            fn(node,counter);
+            node = node.next;
+            counter++;
+        }
+    }
+
+    /* The Symbol.iterator well-known symbol specifies the default iterator for an object. Used by for...of. */
+    *[Symbol.iterator]() {
+        let node = this.head;
+        while (node) {
+            yield node;
+            node = node.next;
+        }
+    }
 }
 
 
