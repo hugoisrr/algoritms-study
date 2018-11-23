@@ -167,24 +167,23 @@ class LinkedList {
         current.next = next;
     }
 
-    /* insertAt(data,index) {
-        if (!this.head) {
-            return null;
+    insertAt(data,index) {
+        if ((!this.head) && (index === 0)) {
+            // arguments passed are data; value store inside the Node, and next will store the location of the first node
+            const node = new Node(data, this.head);
+            // update the link to the new node
+            this.head = node;
         }
-
-        const node = new Node(data, null);
-        if (this.size() < index) {
-            return null;
-        } else if(this.size() === 1) {
+        if ((this.head) && (index === 0)) {            
+            const node = new Node(data, null);            
             node.next = this.head;
             this.head = node;
-        } else if (this.size() >= index){
-            let prevNode = this.getAt(index-1);
-            let nextNode = this.getAt(index+1);
-            prevNode.next = node;
-            node.next = nextNode;
-        }
-    } */
+        }else {
+            const previous = this.getAt(index - 1) || this.getLast();
+            const node = new Node(data, previous.next);
+            previous.next = node;
+        }        
+    }
 
 }
 
